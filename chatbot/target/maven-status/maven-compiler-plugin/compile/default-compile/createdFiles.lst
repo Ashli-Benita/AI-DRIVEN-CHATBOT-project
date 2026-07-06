@@ -1,0 +1,6 @@
+chatbot\ChatRepository.class
+chatbot\OllamaService.class
+chatbot\ChatController.class
+chatbot\ChatService.class
+chatbot\ChatbotApplication.class
+chatbot\ChatMessage.class
