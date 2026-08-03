@@ -1,0 +1,13 @@
+:root { font-family: Inter, system-ui, sans-serif; color: #f5f7fb; background: #0f172a; }
+body { margin: 0; background: linear-gradient(135deg, #111827, #1f2937); color: #f5f7fb; }
+* { box-sizing: border-box; }
+.app-shell { max-width: 760px; margin: 0 auto; padding: 24px; }
+.messages { display: flex; flex-direction: column; gap: 12px; min-height: 420px; margin-bottom: 16px; }
+.message { padding: 12px 14px; border-radius: 12px; background: rgba(255,255,255,0.08); }
+.message.user { background: #2563eb; align-self: flex-end; }
+.message.assistant { background: rgba(255,255,255,0.12); }
+.composer, .auth-card { display: flex; flex-direction: column; gap: 10px; }
+input { flex: 1; padding: 12px; border-radius: 10px; border: none; }
+button { padding: 12px 14px; border: none; border-radius: 10px; background: #38bdf8; color: white; cursor: pointer; }
+button.secondary { background: #475569; }
+.auth-card { background: rgba(255,255,255,0.08); padding: 20px; border-radius: 16px; }

@@ -1,5 +1,6 @@
 package chatbot;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -9,19 +10,25 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Service
 public class OllamaService {
 
-    private final WebClient webClient = WebClient.create("http://localhost:11434");
+    private final WebClient webClient;
     private final ObjectMapper mapper = new ObjectMapper();
+
+    public OllamaService(@Value("${ollama.base.url:http://localhost:11434}") String baseUrl) {
+        this.webClient = WebClient.create(baseUrl);
+    }
 
     public String askAI(String prompt) {
 
         try {
+            String model = System.getenv().getOrDefault("OLLAMA_MODEL", "llama3.2");
+
             String body = """
             {
-              "model": "llama3.2",
+              "model": "%s",
               "prompt": "%s",
               "stream": false
             }
-            """.formatted(prompt.replace("\"", "\\\""));
+            """.formatted(model, prompt.replace("\"", "\\\""));
 
             String response = webClient.post()
                     .uri("/api/generate")
